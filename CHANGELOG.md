@@ -6,7 +6,14 @@ follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) — which for
 a payment library means the seal calculation, the field names and the shape of
 a verified notification are the public surface, not just the method signatures.
 
-## [Unreleased]
+## [0.1.0] - 2026-10-11
+
+First release. `0.x` on purpose: every seal, field name and reply this
+library produces is checked against the platform's technical documentation
+and against its own published example strings, but a documentation is not a
+terminal. Until these four exchanges have been through a real point of sale
+in the sandbox, the version number should not promise that no name has to
+move.
 
 ### Added
 
@@ -28,3 +35,5 @@ a verified notification are the public surface, not just the method signatures.
   omits the authorisation number.
 - Laravel service provider and Symfony bundle, each with the two request and
   response helpers that keep a query parameter out of a signature.
+
+[0.1.0]: https://github.com/xPiston/monetico/releases/tag/v0.1.0
