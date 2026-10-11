@@ -21,8 +21,15 @@
         <testsuite name="integration">
             <directory>tests/Integration</directory>
         </testsuite>
-        <testsuite name="bridge">
-            <directory>tests/Bridge</directory>
+        <!-- One suite per bridge, not one for both: PHPUnit loads a suite's
+             files before it filters anything, so a vendor tree with only one
+             of the two frameworks could not so much as parse the other's
+             test. CI builds exactly such trees to check the lower bounds. -->
+        <testsuite name="laravel">
+            <file>tests/Bridge/LaravelBridgeTest.php</file>
+        </testsuite>
+        <testsuite name="symfony">
+            <file>tests/Bridge/SymfonyBridgeTest.php</file>
         </testsuite>
     </testsuites>
     <source>

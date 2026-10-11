@@ -8,7 +8,7 @@ Sealed payment forms, verified notifications, capture and refund —
 for Laravel, Symfony, or no framework at all.
 
 [![PHP](https://img.shields.io/badge/PHP-8.2%20%E2%86%92%208.5-777BB4?logo=php&logoColor=white)](https://php.net)
-[![Laravel](https://img.shields.io/badge/Laravel-11%20%7C%2012%20%7C%2013-FF2D20?logo=laravel&logoColor=white)](https://laravel.com)
+[![Laravel](https://img.shields.io/badge/Laravel-12%20%7C%2013-FF2D20?logo=laravel&logoColor=white)](https://laravel.com)
 [![Symfony](https://img.shields.io/badge/Symfony-6.4%20%7C%207-000000?logo=symfony&logoColor=white)](https://symfony.com)
 [![Tests](https://img.shields.io/badge/tests-444%20passing-22C55E)](#-tests)
 [![PHPStan](https://img.shields.io/badge/PHPStan-max-2563EB)](#-tests)
@@ -235,6 +235,11 @@ nothing in the logs to say why.
 
 `php artisan vendor:publish --tag=monetico-config` writes the config file, with
 the reasoning for each option in it.
+
+Laravel **12 and 13** are in the test matrix. The bridge touches nothing newer
+than `ServiceProvider`, `Request` and `Response`, so it works on 11 as well -
+but 11 is not tested, because Composer now refuses to install any 11.x release:
+they are all covered by security advisories.
 
 ## 🧰 Symfony
 
