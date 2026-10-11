@@ -94,14 +94,26 @@ final class LaravelBridgeTest extends TestCase
 
     public function test_the_config_file_can_be_published(): void
     {
+        $published = $this->laravel()->configPath('monetico.php');
+
+        // Deleted first, because a file left behind by an earlier run makes
+        // this test pass without publishing anything - which is exactly how
+        // it passed here while failing on CI.
+        @unlink($published);
+
         $command = $this->artisan('vendor:publish', ['--tag' => 'monetico-config']);
 
         $this->assertInstanceOf(PendingCommand::class, $command);
-        $command->assertSuccessful();
 
-        $this->assertFileExists($this->laravel()->configPath('monetico.php'));
+        // run() is what executes the command. assertSuccessful() only records
+        // the expectation; the command itself would not run until the
+        // PendingCommand is destructed, which is after the assertions below.
+        $this->assertSame(0, $command->run());
 
-        @unlink($this->laravel()->configPath('monetico.php'));
+        $this->assertFileExists($published);
+        $this->assertStringContainsString('MONETICO_TERMINAL', (string) file_get_contents($published));
+
+        @unlink($published);
     }
 
     public function test_production_is_a_configuration_choice_and_not_the_kernel_environment(): void
