@@ -1,7 +1,0 @@
-#!/bin/sh
-exec docker run --rm --network host \
-  --user "$(id -u):$(id -g)" \
-  -e COMPOSER_HOME=/tmp/composer-home \
-  -v /home/piston/.cache/monetico-composer:/tmp/composer-home \
-  -v "$(git rev-parse --show-toplevel)":/app -w /app \
-  ecommerce-hexa-php-dev:8.5 composer "$@"

@@ -429,7 +429,10 @@ src/
 
 ## ✅ Tests
 
+PHP 8.2 or later and Composer, and nothing else:
+
 ```sh
+composer install
 composer test       # 444 tests
 composer analyse    # PHPStan, level max
 composer test:lint  # Pint
