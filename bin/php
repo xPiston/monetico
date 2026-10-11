@@ -1,0 +1,5 @@
+#!/bin/sh
+exec docker run --rm --network host \
+  --user "$(id -u):$(id -g)" \
+  -v "$(git rev-parse --show-toplevel)":/app -w /app \
+  ecommerce-hexa-php-dev:8.5 php "$@"
