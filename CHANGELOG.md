@@ -6,6 +6,19 @@ follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) — which for
 a payment library means the seal calculation, the field names and the shape of
 a verified notification are the public surface, not just the method signatures.
 
+## [Unreleased]
+
+### Changed
+
+- **The development constraints now allow Laravel 13, Symfony 8 and
+  PHPUnit 13.** `composer.json` claimed support for Laravel 13, but
+  `orchestra/testbench: ^10.0` pinned the resolver to Laravel 12 - the major
+  of testbench follows the major of Laravel - so the `highest` CI job had
+  never once run against the version the package advertised. Symfony had to
+  come along with it, since Laravel 13 depends on Symfony 8. Nothing in
+  `require` moved: this is still PHP 8.2 and PSR interfaces, and no consumer's
+  resolution changes.
+
 ## [0.1.0] - 2026-10-11
 
 First release. `0.x` on purpose: every seal, field name and reply this
